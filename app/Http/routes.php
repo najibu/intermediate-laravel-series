@@ -1,5 +1,7 @@
 <?php
 
+use App\Events\UserWasBanned;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,5 +14,9 @@
 */
 
 Route::get('/', function () {
+	$user = new App\User;
+
+	event( new UserWasBanned($user));
+
     return view('welcome');
 });
